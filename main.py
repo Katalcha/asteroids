@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -28,6 +29,11 @@ def main():
 
         for sprite in updateable:
             sprite.update(dt)
+
+        for sprite in asteroids:
+            if player.detectCollision(sprite):
+                print("Game over!")
+                sys.exit(1)
 
         screen.fill((0, 0, 0))
 
